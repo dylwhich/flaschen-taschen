@@ -9,9 +9,13 @@ MAGICK_LDFLAGS=`GraphicsMagick++-config --ldflags --libs`
 
 FFMPEG_LDFLAGS=`pkg-config --cflags --libs  libavcodec libavformat libswscale libavutil`
 
-all : send-text
+all : send-text clock typewriter
+
+clock: clock.cc
 
 send-text: send-text.cc
+
+typewriter: typewriter.cc
 
 send-image : send-image.cc $(FTLIB)
 	$(CXX) $(CXXFLAGS) $(MAGICK_CXXFLAGS) -o $@ $< $(MAGICK_LDFLAGS) $(LDFLAGS)
